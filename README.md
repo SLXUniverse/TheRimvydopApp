@@ -4,7 +4,7 @@ Download files via The Rimvydop App.
 ### Supported
 |           | x86 | x64    |
 | --------- | --- | ------ |
-| Windows   | ✅  | ✅    |
+| Windows   | Won't work. They will fix  | ✅    |
 | Linux     | -   | -      |
 
 ### Screenshot
