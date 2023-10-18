@@ -1,0 +1,171 @@
+import tkinter as tk
+from tkinter import messagebox
+import webbrowser
+
+class WebViewApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("The Rimvydop App | v0.2")
+        self.geometry("600x400")
+        self.iconbitmap("icon.ico")
+        self.create_widgets()
+
+    def create_widgets(self):
+        title_label = tk.Label(self, text="The Rimvydop App", font=("Helvetica", 24))
+        title_label.pack(pady=20)
+
+        instruction_label = tk.Label(self, text="Would you like to choose?", font=("Helvetica", 16))
+        instruction_label.pack(pady=10)
+
+        windows_button = tk.Button(self, text="Windows", font=("Helvetica", 16), command=self.open_windows_window)
+        windows_button.pack(pady=10)
+
+        android_button = tk.Button(self, text="Android", font=("Helvetica", 16), command=self.open_android_window)
+        android_button.pack(pady=10)
+
+        linux_button = tk.Button(self, text="Linux", font=("Helvetica", 16), command=self.open_linux_window)
+        linux_button.pack(pady=10)
+        
+        classic_windows_button = tk.Button(self, text="Classic Windows", font=("Helvetica", 16), command=self.open_classic_windows_window)
+        classic_windows_button.pack(pady=10)
+        
+    def open_android_window(self):
+        android_window = tk.Toplevel(self)
+        android_window.title("Android | The Rimvydop App")
+        android_window.geometry("400x300")
+        android_window.iconbitmap("icon.ico")
+                
+        scrollbar = tk.Scrollbar(android_window)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        android_text = tk.Text(android_window, wrap=tk.WORD, yscrollcommand=scrollbar.set, spacing1=10, spacing2=5)
+        android_text.pack(fill=tk.BOTH, expand=True)
+
+        android_versions = [
+            {"name": "Android 9", "size": "605 MB", "url": "https://pixeldrain.com/u/uuMhJGzg"},
+            {"name": "Android 6", "size": "436.41 MB", "url": "https://www.mediafire.com/file/hj2z1qb1g6wbgsz/android-x86-6.0-r1.rar/file"},
+            {"name": "Android 5.1", "size": "398.06 MB", "url": "https://www.mediafire.com/file/beo46gnzv72ykcd/Android_5.1-rc1.rar/file"},
+            {"name": "Android 4.4", "size": "279.81 MB", "url": "https://www.mediafire.com/file/g5jhq1cmjoj2iqc/Android_4.4_RC1.rar/file"},
+            {"name": "Android 2.2", "size": "78.74 MB", "url": "https://www.mediafire.com/file/a0m5dgzs1ywxpcs/Android_2.2.rar/file"},
+            {"name": "Android 1.6", "size": "201.18 MB", "url": "https://www.mediafire.com/file/4ar5yshyx7b9788/Android_1.6.rar/file"}
+        ]
+
+        for version in android_versions:
+            android_text.insert(tk.END, f"{version['name']}\t\t{version['size']}\t\t")
+            download_button = tk.Button(android_text, text="Download", command=lambda url=version['url']: self.download(url))
+            android_text.window_create(tk.END, window=download_button)
+            android_text.insert(tk.END, "\n")
+
+        scrollbar.config(command=android_text.yview)
+
+    def open_windows_window(self):
+        windows_window = tk.Toplevel(self)
+        windows_window.title("Windows | The Rimvydop App")
+        windows_window.geometry("400x300")
+        windows_window.iconbitmap("icon.ico")
+        
+        scrollbar = tk.Scrollbar(windows_window)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        windows_text = tk.Text(windows_window, wrap=tk.WORD, yscrollcommand=scrollbar.set, spacing1=10, spacing2=5)
+        windows_text.pack(fill=tk.BOTH, expand=True)
+        
+        windows_versions = [
+            {"name": "Windows 10 S", "size": "2.58 GB", "url": "https://pixeldrain.com/u/Szm2YfcS"},
+            {"name": "Windows 10 Pro Metroless", "size": "2 GB", "url": "https://drive.google.com/file/d/1VAKPHZVKMN8hlNbjwe2jcNKRH4T_wsRl/view"},
+            {"name": "Windows 8 Pro LiteOS", "size": "2.37 GB", "url": "https://www.mediafire.com/file/134ppjvff6z5q58/Windows_8.rar/file"},
+            {"name": "Windows 10 Mobile", "size": "2.2 GB", "url": "https://archive.org/download/Windows10MobileBuild14393"},
+            {"name": "Windows 11 Enterprise 21H2 (Tiny 11)", "size": "2.24 GB", "url": "https://www.mediafire.com/file/yyl4hzase992b1q/Tiny_11.rar/file"},
+            {"name": "Windows 10 Pro (Nexus LiteOS 1709)", "size": "933 MB", "url": "https://pixeldrain.com/u/f5Sbxg4F"},
+            {"name": "Windows XP 2021 Edition", "size": "4 GB", "url": "https://drive.google.com/file/d/1qvUsDPYKIab22ko265Hkb8F3sWdaIBui/view"},
+            {"name": "Windows 10 Pro 1909 Dark", "size": "1.47 GB", "url": "https://mega.nz/file/JwpGQTqT#txRYCjVjwyzfO0Knrh21idCKauvjOWclUdldXnnkrQM"},
+            {"name": "Windows 7 Starter", "size": "1.61 GB", "url": "https://mega.nz/file/U84HCKSD#1MoPFGK96VAtJhxM-8IRSMEL60HyC_rmBamWRj-sCAY"},
+            {"name": "Windows 8.1 Pro Superlite", "size": "816.26 MB", "url": "https://www.mediafire.com/file/ve0ijqe44t6tn7s/Windows+8.1+Pro+Superlite+by+@Rimvydop.rar/file"},
+            {"name": "Windows 7 Superlite", "size": "431.67 MB", "url": "https://www.mediafire.com/file/pp41u2cjlivuone/Windows_7_Superlite_by_%2540Rimvydop.rar/file"},
+            {"name": "Windows 10 Pro Superlite v6", "size": "1.2 GB", "url": "https://www.mediafire.com/file/zklq6nftuchlidq/Windows_10_Pro_Superlite_V6_by_%2540TheRimvydop.rar/file"},
+            {"name": "Windows 7 Enterprise", "size": "1.87 GB", "url": "https://www.mediafire.com/file/50flher943s4qfy/Windows_7_Enterprise.rar/file"},
+            {"name": "Windows 7 Pro LiteOS", "size": "1.4 GB", "url": "https://www.mediafire.com/file/rxo6pv9oswgsdr4/Windows_7_Lite_OS_by_%2540TheRimvydop.rar/file"},
+            {"name": "Windows 11 Pro (Nexus Tiny 11)", "size": "1.79 GB", "url": "https://www.mediafire.com/file/fsx49883t5ukxpt/Nexus_Tiny_Lite_OS_11_by_%2540TheRimvydop.rar/file?dkey=52y5fivnrju&r=332"},
+            {"name": "Windows 11 Pro 22H2 LiteOS", "size": "1.83 GB", "url": "https://www.mediafire.com/file/422v5n8hlb8omnx/Windows_11_Pro_Lite_OS_22h2_by_%2540TheRimvydop.rar/file"},
+            {"name": "Windows 10 Pro 21H1 LiteOS", "size": "1.5 GB", "url": "https://www.mediafire.com/file/lk8cpdl0tdj4spf/Windows_10_Pro_32bit_21H1_APRIL_2021_-_LiteOS_by_%2540TheRimvydop.rar/file"},
+            {"name": "Windows 10 Enterprise LTSC Original", "size": "2.92 GB", "url": "https://www.mediafire.com/file/zt5n91oo7ql7373/Windows_10_Enterprise_LTSC_Original_by_%2540TheRimvydop.rar/file"},
+            {"name": "Windows 10 Pro Ghost Spectre", "size": "2 GB", "url": "https://drive.google.com/file/d/1Ee3CODYc9QJto6pHqui_JfRGCPeO3BnC/view"},
+            {"name": "Windows 8.1 Pro Original", "size": "2.04 GB", "url": "https://www.dropbox.com/s/hlu6gjvnjop0nrv/Windows%208.1%20Pro.rar?dl=0"},
+            {"name": "Windows 11 LTSC", "size": "2 GB", "url": "https://drive.google.com/file/d/165BrmMtg5JXjTKPIU-qjPaEOK7dRUvH1/view"},
+            {"name": "Windows 10 Enterprise 1903 Original", "size": "3 GB", "url": "https://drive.google.com/file/d/1kFNfUDIUuePO35I0PvMO-wjK938JoBQF/view"},
+            {"name": "Windows 7 Supernano", "size": "? MB", "url": "https://www.mediafire.com/error.php?errno=320&origin=download"},
+            {"name": "Windows 10 Enterprise", "size": "1.22 GB", "url": "https://www.mediafire.com/file/h64eudj749tl3md/Windows_10_Enterprise.rar/file"},
+            {"name": "Windows 11 Pro 21H1 (Nexus LiteOS 22000.466)", "size": "2 GB", "url": "https://drive.google.com/file/d/117MGraRGrIWBZqIlfSjJIUxpvJcsirLI/view"},
+            {"name": "Windows 10 Enterprise PE 1903", "size": "474 MB", "url": "https://drive.google.com/file/d/1_y2IrXY6GIpdkKjBty6GJ0xqRh0jTII6/view"},
+            {"name": "Windows 10 Enterprise LTSC (Tiny 10)", "size": "804.42 MB", "url": "https://www.mediafire.com/file/tpy1bhsdeh6l607/Tiny_10.rar/file"},
+            {"name": "Windows 11 Pro LTSC 22H2 LiteOS", "size": "2.35 GB", "url": "https://www.mediafire.com/file/lfzaalvx4cb2k33/Windows+LTSC+2H22+LiteOS+by+@TheRimvydop.rar/file"},
+            {"name": "Windows 10 Pro 1709 (Nexus LiteOS)", "size": "2 GB", "url": "https://drive.google.com/file/d/141b89iolB_yokFGceDvZy2lZDL2IGj6E/view"},
+            {"name": "Windows 10 Pro 22H2 (Nexus LiteOS)", "size": "2.73 GB", "url": "https://www.mediafire.com/file/z8cqoz42sq0lf4e/Nexus_LiteOS_10_Pro_22H2_by_%2540Rimvydop.rar/file"},
+            {"name": "Windows 10 Pro 21H1 (Phoenix LiteOS)", "size": "1.58 GB", "url": "https://www.mediafire.com/file/cclcqpaupn3xfgv/Windows_10_Pro_%2528Phoenix_LiteOS_Gamer%2529_by_%2540TheRimvydop.rar/file"},
+            {"name": "Windows 8 Enterprise N (Tiny 8)", "size": "? MB", "url": "http://7ya10qn75ndo5jbjbjcifv5ku8zh6bk/view?usp=drivesdk"},
+            {"name": "Windows Server 2016", "size": "14 GB", "url": "https://drive.google.com/file/d/1-3siTuqBCVo7Qqjsyl1nUYRVOOGAhYrF/view"},
+            {"name": "Windows 10 Enterprise Evaluation", "size": "1 GB", "url": "https://drive.google.com/file/d/147d6Sp-7HvBXChh2SNFq2z5dBdH7euNT/view"},
+            {"name": "Windows Server 2022 Data Center", "size": "1.71 GB", "url": "https://www.mediafire.com/file/l2ckgs12uge012c/Windows_Server_2025.rar/file?dkey=e7rmnpj7cgr&r=344"}
+        ]
+        
+        for version in windows_versions:
+            windows_text.insert(tk.END, f"{version['name']}\t\t{version['size']}\t\t")
+            download_button = tk.Button(windows_text, text="Download", command=lambda url=version['url']: self.download(url))
+            windows_text.window_create(tk.END, window=download_button)
+            windows_text.insert(tk.END, "\n")
+        
+    def open_classic_windows_window(self):
+        classic_windows_window = tk.Toplevel(self)
+        classic_windows_window.title("Classic Windows | The Rimvydop App")
+        classic_windows_window.geometry("400x300")
+        classic_windows_window.iconbitmap("icon.ico")
+        
+        scrollbar = tk.Scrollbar(classic_windows_window)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        classic_windows_text = tk.Text(classic_windows_window, wrap=tk.WORD, yscrollcommand=scrollbar.set, spacing1=10, spacing2=5)
+        classic_windows_text.pack(fill=tk.BOTH, expand=True)
+        
+        classic_windows_versions = [
+            {"name": "Windows XP SP3", "size": "1 GB", "url": "https://drive.google.com/file/d/157TL4N20irPwihDYzKmm_D_Jtt3Vfv4j/view"},
+            {"name": "Windows Vista Ultimate", "size": "7 GB", "url": "https://drive.google.com/file/d/14yRWNdDd-v6JSFGK5jbT0GJiJtanRp8t/view"}
+        ]
+        
+        for version in classic_windows_versions:
+            classic_windows_text.insert(tk.END, f"{version['name']}\t\t{version['size']}\t\t")
+            download_button = tk.Button(classic_windows_text, text="Download", command=lambda url=version['url']: self.download(url))
+            classic_windows_text.window_create(tk.END, window=download_button)
+            classic_windows_text.insert(tk.END, "\n")
+
+    def open_linux_window(self):
+        linux_window = tk.Toplevel(self)
+        linux_window.title("Linux | The Rimvydop App")
+        linux_window.geometry("400x300")
+        linux_window.iconbitmap("icon.ico")
+        
+        scrollbar = tk.Scrollbar(linux_window)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        linux_text = tk.Text(linux_window, wrap=tk.WORD, yscrollcommand=scrollbar.set, spacing1=10, spacing2=5)
+        linux_text.pack(fill=tk.BOTH, expand=True)
+        
+        linux_versions = [
+            {"name": "Slax Linux", "size": "? MB", "url": "https://www.slax.org/?ref=itsfoss.com"}
+        ]
+        
+        for version in linux_versions:
+            linux_text.insert(tk.END, f"{version['name']}\t\t{version['size']}\t\t")
+            download_button = tk.Button(linux_text, text="Download", command=lambda url=version['url']: self.download(url))
+            linux_text.window_create(tk.END, window=download_button)
+            linux_text.insert(tk.END, "\n")
+
+    def download(self, url):
+        webbrowser.open(url)
+
+    def show_about(self):
+        about_text = "This is a simple WebView app using tkinter."
+        messagebox.showinfo("About", about_text)
+
+if __name__ == "__main__":
+    app = WebViewApp()
+    app.mainloop()
