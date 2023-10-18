@@ -1,7 +1,7 @@
 # The Rimvydop App
 Download files via The Rimvydop App.
 
-### Supported Operating System
+### Supported
 |           | x86 | x64    |
 | --------- | --- | ------ |
 | Windows   | ✅  | ✅    |
