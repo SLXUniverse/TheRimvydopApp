@@ -2,7 +2,7 @@
 Download files via The Rimvydop App.
 
 ### Supported Operating System
-- Windows (Coming Soon)
+- Windows
 - Linux (Coming Soon)
 - macOS (Coming Soon)
 - Raspberry Pi OS (Coming Soon)
