@@ -18,3 +18,10 @@ Download files via The Rimvydop App.
 bc1qqusynns3mnhvmhv9u5m5wp5gq37tl2sfksu9zr
 ```
 </details>
+<details>
+<summary><b>Litecoin</summary>
+  
+```
+LWuSFmmrRgd29L3DUFHiXMWo85rNhpGa57
+```
+</details>
