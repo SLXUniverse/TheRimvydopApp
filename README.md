@@ -1,10 +1,13 @@
 # The Rimvydop App
-Download files via The Rimvydop App.
+Download files or other via The Rimvydop App.
 
 ### Supported
 |           | x86 | x64    |
 | --------- | --- | ------ |
 | Windows   | ✅  | ✅    |
+
+### Install
+[Here](https://github.com/SLXUniverse/TheRimvydopApp/releases)
 
 ### Screenshot
 ![image](https://github.com/SLXUniverse/TheRimvydopApp/assets/109912460/2714963e-b247-4f31-a862-f87a27fe6cc0)
