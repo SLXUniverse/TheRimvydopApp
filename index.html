@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Rimvydop App</title>
+  <style>
+    /* Center elements */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .logo {
+      max-width: 100%; /* Adjust the width as needed */
+      height: auto;
+      margin-bottom: 20px; /* Add some space below the logo */
+    }
+    .screenshot-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .screenshot {
+      max-width: 50%; /* Adjust the width as needed */
+      height: auto;
+    }
+    /* Center text and links */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; /* Adjust spacing as needed */
+    }
+    .download-button {
+      background-color: #FF0000; /* Red color */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 0 10px; /* Adjust spacing as needed */
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .download-button:hover {
+      background-color: #CC0000; /* Darker red on hover */
+    }
+  </style>
+</head>
+<body>
+   <!-- The Rimvydop App's logo -->
+  <img src="rimvydop-logo.png" alt="Rimvydop App Logo" class="logo">
+
+  <!-- Screenshot gallery -->
+  <div class="screenshot-container">
+    <button onclick="previousSlide()">❮</button>
+    <img class="screenshot" src="image-4.png" alt="Screenshot 1">
+    <img class="screenshot" src="image-5.png" alt="Screenshot 2">
+    <img class="screenshot" src="image-6.png" alt="Screenshot 3">
+    <button onclick="nextSlide()">❯</button>
+  </div>
+
+  <p></p>
+  <h3>Download for Windows (Latest)</h3>
+  <div class="button-container">
+    <a href="https://github.com/SLXUniverse/TheRimvydopApp/releases/download/v0.5/TheRimvydopApp-Windows32bit.exe" download class="download-button">32-bit</a>
+    <a href="https://github.com/SLXUniverse/TheRimvydopApp/releases/download/v0.5/TheRimvydopApp-Windows64bit.exe" download class="download-button">64-bit</a>
+  </div>
+
+  <p></p>
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/HGEy5vp7w3c?si=LZ0Fq_B_s3OxENoO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+  <script>
+    let currentSlide = 0;
+    const screenshots = document.querySelectorAll('.screenshot');
+
+    function showSlide() {
+      screenshots.forEach(screenshot => screenshot.style.display = 'none');
+      screenshots[currentSlide].style.display = 'block';
+    }
+
+    function previousSlide() {
+      currentSlide = (currentSlide === 0) ? (screenshots.length - 1) : (currentSlide - 1);
+      showSlide();
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide === screenshots.length - 1) ? 0 : (currentSlide + 1);
+      showSlide();
+    }
+
+    showSlide();
+  </script>
+</body>
+</html>
